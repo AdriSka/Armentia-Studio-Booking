@@ -4,7 +4,6 @@ package armentiaProject
 
 import grails.test.mixin.*
 import spock.lang.*
-
 @TestFor(AbonoController)
 @Mock(Abono)
 class AbonoControllerSpec extends Specification {
