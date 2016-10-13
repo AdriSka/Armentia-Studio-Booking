@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Banda" %>
+<%@ page import="armentiaTest.Banda" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,9 +26,9 @@
 					
 						<g:sortableColumn property="nombre" title="${message(code: 'banda.nombre.label', default: 'Nombre')}" />
 					
-						<th><g:message code="banda.integrantes.label" default="Integrantes" /></th>
-					
 						<th><g:message code="banda.abono.label" default="Abono" /></th>
+						
+						<th><g:message code="banda.integrantesAmount.label" default="Cantidad de Integrantes" /></th>
 					
 					</tr>
 				</thead>
@@ -38,9 +38,19 @@
 					
 						<td><g:link action="show" id="${bandaInstance.id}">${fieldValue(bean: bandaInstance, field: "nombre")}</g:link></td>
 					
-						<td>${fieldValue(bean: bandaInstance, field: "integrantes")}</td>
+						<g:if test="${bandaInstance.abono}">
+							<td>${fieldValue(bean: bandaInstance, field: "abono.alias")}</td>
+						</g:if>						
+						<g:else>
+							<td><font size="3"><i>-Sin abono asignado-</i></font></td>
+						</g:else>
 					
-						<td>${fieldValue(bean: bandaInstance, field: "abono")}</td>
+						<g:if test="${bandaInstance.integrantes.size()}">
+							<td>${bandaInstance.integrantes.size()}</td>
+						</g:if>						
+						<g:else>
+							<td><font size="3" color="red"><i>DEBE AGREGARSE AL MENOS UN INTEGRANTE</i></font></td>
+						</g:else>
 					
 					</tr>
 				</g:each>

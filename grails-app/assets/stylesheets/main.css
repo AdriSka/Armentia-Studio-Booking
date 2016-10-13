@@ -11,11 +11,11 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-	background-image: linear-gradient(top, #aaa, #ddd);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
+	background-color: #aaa;
+	background-image: -moz-linear-gradient(center top, #777, #aaa);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #777), color-stop(1, #aaa));
+	background-image: linear-gradient(top, #777, #aaa);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#777777', EndColorStr = '#aaaaaa');
 	background-repeat: no-repeat;
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
@@ -25,7 +25,7 @@ html {
 }
 
 html.no-cssgradients {
-	background-color: #aaa;
+	background-color: #777;
 }
 
 .ie6 html {
@@ -37,25 +37,25 @@ html * {
 }
 
 body {
-	background: #ffffff;
-	color: #333333;
+	background: #efefef;
+	color: #7f7f7f;
 	margin: 0 auto;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #1c175b;
+	-webkit-box-shadow: 0 0 0.3em #1c175b;
+	        box-shadow: 0 0 0.3em #1c175b;
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #add8e6;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
 .ie7 body,
 .ie8 body {
-	border-color: #255b17;
+	border-color: #10637e;
 	border-style: solid;
 	border-width: 0 1px;
 }
@@ -65,7 +65,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #1e90ff;
 }
 
 a:hover, a:active {
@@ -73,9 +73,9 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #2c5780;
 	font-weight: normal;
-	font-size: 1.25em;
+	font-size: 2em;
 	margin: 0.8em 0 0.3em 0;
 }
 
@@ -98,7 +98,7 @@ img {
 }
 
 .content h1 {
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid #aaaa;
 	margin: 0.8em 1em 0.3em;
 	padding: 0 0.25em;
 }
@@ -108,7 +108,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #add8e6;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -118,7 +118,7 @@ img {
 }
 
 .footer a {
-	color: #255b17;
+	color: ##add8e6;
 }
 
 .spinner {
@@ -158,7 +158,7 @@ img {
 }
 
 .nav a {
-	color: #666666;
+	color: #777777;
 	display: block;
 	padding: 0.25em 0.7em;
 	text-decoration: none;
@@ -168,7 +168,7 @@ img {
 }
 
 .nav a:active, .nav a:visited {
-	color: #666666;
+	color: #777777;
 }
 
 .nav a:focus, .nav a:hover {
@@ -225,7 +225,7 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	color: #777777;
 	text-align: right;
 	width: 25%;
 }
@@ -283,7 +283,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .required-indicator {
-	color: #48802C;
+	color: #3b7dc4;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -430,7 +430,7 @@ th {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
 	    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-	color: #666666;
+	color: #777777;
 	font-weight: bold;
 	line-height: 1.7em;
 	padding: 0.2em 0.6em;
@@ -446,7 +446,7 @@ th a {
 }
 
 th a:link, th a:visited {
-	color: #666666;
+	color: #777777;
 }
 
 th a:hover, th a:focus {
@@ -476,7 +476,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #d1e2eb;
 }
 
 /* PAGINATION */
@@ -494,7 +494,7 @@ th:hover, tr:hover {
 
 .pagination a,
 .pagination .currentStep {
-	color: #666666;
+	color: #777777;
 	display: inline-block;
 	margin: 0 0.1em;
 	padding: 0.25em 0.7em;
@@ -533,10 +533,11 @@ th:hover, tr:hover {
 }
 
 .buttons input,
+
 .buttons a {
 	background-color: transparent;
 	border: 0;
-	color: #666666;
+	color: #777777;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0.25em 0;
@@ -567,14 +568,14 @@ th:hover, tr:hover {
 	text-decoration: underline;
 }
 
-.buttons .delete, .buttons .edit, .buttons .save {
+.buttons .delete, .buttons .edit, .buttons .save, .buttons .create {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
 }
 
-.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save,
-.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save {
+.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save, .ie6 .buttons input.create,
+.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save, .ie7 .buttons input.create {
 	padding-left: 36px;
 }
 
@@ -588,6 +589,10 @@ th:hover, tr:hover {
 
 .buttons .save {
 	background-image: url(../images/skin/database_save.png);
+}
+
+.buttons .create {
+	background-image: url(../images/skin/database_add.png);
 }
 
 a.skip {

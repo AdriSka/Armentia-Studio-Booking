@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'integrante.label', default: 'Integrante')}" />
+		<g:set var="entityBandaName" value="${integranteInstance?.banda?.nombre}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -14,7 +15,7 @@
 			</ul>
 		</div>
 		<div id="create-integrante" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h1><g:message code="default.create.integrante.label" args="[entityBandaName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

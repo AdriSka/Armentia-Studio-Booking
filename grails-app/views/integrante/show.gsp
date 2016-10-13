@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Integrante" %>
+<%@ page import="armentiaTest.Integrante" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+<%--				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--%>
 			</ul>
 		</div>
 		<div id="show-integrante" class="content scaffold-show" role="main">
@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list integrante">
 			
+				<g:if test="${integranteInstance?.banda}">
+				<li class="fieldcontain">
+					<span id="banda-label" class="property-label"><g:message code="integrante.banda.label" default="Banda" /></span>
+					
+						<span class="property-value" aria-labelledby="banda-label"><g:link controller="banda" action="show" id="${integranteInstance?.banda?.id}">${integranteInstance?.banda?.nombre?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${integranteInstance?.nombre}">
 				<li class="fieldcontain">
 					<span id="nombre-label" class="property-label"><g:message code="integrante.nombre.label" default="Nombre" /></span>
 					
 						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${integranteInstance}" field="nombre"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${integranteInstance?.apellido}">
-				<li class="fieldcontain">
-					<span id="apellido-label" class="property-label"><g:message code="integrante.apellido.label" default="Apellido" /></span>
-					
-						<span class="property-value" aria-labelledby="apellido-label"><g:fieldValue bean="${integranteInstance}" field="apellido"/></span>
 					
 				</li>
 				</g:if>
@@ -50,14 +50,15 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${integranteInstance?.telefono}">
 				<li class="fieldcontain">
 					<span id="telefono-label" class="property-label"><g:message code="integrante.telefono.label" default="Telefono" /></span>
-					
+					<g:if test="${integranteInstance?.telefono}">
 						<span class="property-value" aria-labelledby="telefono-label"><g:fieldValue bean="${integranteInstance}" field="telefono"/></span>
-					
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="telefono-label"><font size="3" ><i>-Sin teléfono asignado-</i></font></span>
+					</g:else>
 				</li>
-				</g:if>
 			
 			</ol>
 			<g:form url="[resource:integranteInstance, action:'delete']" method="DELETE">

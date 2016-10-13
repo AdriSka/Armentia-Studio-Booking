@@ -1,4 +1,4 @@
-<%@ page import="armentiaProject.Reserva" %>
+<%@ page import="armentiaTest.Reserva" %>
 
 
 

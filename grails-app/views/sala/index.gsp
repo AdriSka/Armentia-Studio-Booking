@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Sala" %>
+<%@ page import="armentiaTest.Sala" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+<%--				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--%>
 			</ul>
 		</div>
 		<div id="list-sala" class="content scaffold-list" role="main">
@@ -24,19 +24,23 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="precioPorHora" title="${message(code: 'sala.precioPorHora.label', default: 'Precio Por Hora')}" />
+						<g:sortableColumn property="nombreSala" title="${message(code: 'sala.armentia.label', default: 'Armentia')}" />						
 					
-						<th><g:message code="sala.reservas.label" default="Reservas" /></th>
-					
+						<g:sortableColumn property="nombreSala" title="${message(code: 'sala.nombreSala.label', default: 'Nombre de la Sala')}" />
+						
+						<th><g:message code="sala.precioPorHora.label" default="Precio Por Hora" /></th>
+						
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${salaInstanceList}" status="i" var="salaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${salaInstance.id}">${fieldValue(bean: salaInstance, field: "precioPorHora")}</g:link></td>
+						<td><g:link controller="armentia" action="show" id="${salaInstance.armentia.id}">${fieldValue(bean: salaInstance, field: "armentia.nombre")}</g:link></td>
 					
-						<td>${fieldValue(bean: salaInstance, field: "reservas")}</td>
+						<td><g:link action="show" id="${salaInstance.id}">${fieldValue(bean: salaInstance, field: "nombreSala")}</g:link></td>
+					
+						<td>${fieldValue(bean: salaInstance, field: "precioPorHora")}</td>
 					
 					</tr>
 				</g:each>

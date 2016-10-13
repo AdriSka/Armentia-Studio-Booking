@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Armentia" %>
+<%@ page import="armentiaTest.Armentia" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,6 +22,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list armentia">
+
+				<g:if test="${armentiaInstance?.nombre}">
+				<li class="fieldcontain">
+					<span id="nombre-label" class="property-label"><g:message code="armentia.nombre.label" default="Nombre" /></span>
+					
+						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${armentiaInstance}" field="nombre"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${armentiaInstance?.direccion}">
 				<li class="fieldcontain">
@@ -40,15 +49,18 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${armentiaInstance?.salas}">
+
 				<li class="fieldcontain">
 					<span id="salas-label" class="property-label"><g:message code="armentia.salas.label" default="Salas" /></span>
-					
-						<span class="property-value" aria-labelledby="salas-label"><g:link controller="sala" action="show" id="${armentiaInstance?.salas?.id}">${armentiaInstance?.salas?.encodeAsHTML()}</g:link></span>
-					
+					<g:if test="${armentiaInstance?.salas}">
+						<g:each in="${armentiaInstance.salas}" var="i">
+							<span class="property-value" aria-labelledby="salas-label"><g:link controller="sala" action="show" id="${i.id}">${i?.nombreSala?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="salas-label"><font size="3" color="red"><i>Debe agregar al menos una sala</i></font></span>
+					</g:else>
 				</li>
-				</g:if>
 			
 			</ol>
 			<g:form url="[resource:armentiaInstance, action:'delete']" method="DELETE">

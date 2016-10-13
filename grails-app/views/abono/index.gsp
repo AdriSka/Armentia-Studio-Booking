@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Abono" %>
+<%@ page import="armentiaTest.Abono" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,6 +24,8 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="alias" title="${message(code: 'abono.alias.label', default: 'Alias')}" />
+					
 						<g:sortableColumn property="inicioAbono" title="${message(code: 'abono.inicioAbono.label', default: 'Inicio Abono')}" />
 					
 					</tr>
@@ -32,7 +34,9 @@
 				<g:each in="${abonoInstanceList}" status="i" var="abonoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${abonoInstance.id}">${fieldValue(bean: abonoInstance, field: "inicioAbono")}</g:link></td>
+						<td><g:link action="show" id="${abonoInstance.id}">${fieldValue(bean: abonoInstance, field: "alias")}</g:link></td>
+					
+						<td><g:formatDate date="${abonoInstance.inicioAbono}"/></td>
 					
 					</tr>
 				</g:each>

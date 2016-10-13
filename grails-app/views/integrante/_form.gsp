@@ -1,4 +1,4 @@
-<%@ page import="armentiaProject.Integrante" %>
+<%@ page import="armentiaTest.Integrante" %>
 
 
 
@@ -8,15 +8,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="nombre" required="" value="${integranteInstance?.nombre}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: integranteInstance, field: 'apellido', 'error')} required">
-	<label for="apellido">
-		<g:message code="integrante.apellido.label" default="Apellido" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="apellido" required="" value="${integranteInstance?.apellido}"/>
 
 </div>
 
@@ -36,5 +27,17 @@
 	</label>
 	<g:textField name="telefono" value="${integranteInstance?.telefono}"/>
 
+</div>
+
+<div hidden class="fieldcontain ${hasErrors(bean: integranteInstance, field: 'banda', 'error')} required">
+	<label for="banda">
+		<g:message code="integrante.banda.label" default="Banda" />
+		<span class="required-indicator">*</span>
+	</label>
+	
+<%--	<g:select id="banda" name="banda.id" from="${armentiaTest.Banda.list()}" optionKey="id" optionValue="nombre" required="" value="${integranteInstance?.banda?.id}" class="many-to-one"/>--%>
+	<g:hiddenField name="banda.id" value="${integranteInstance?.banda?.id}" />
+<%--	<g:field type="text" name="bandaField" disabled value="${integranteInstance?.banda?.nombre}"/>--%>
+	
 </div>
 

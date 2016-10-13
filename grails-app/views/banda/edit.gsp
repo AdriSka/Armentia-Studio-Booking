@@ -1,9 +1,10 @@
-<%@ page import="armentiaProject.Banda" %>
+<%@ page import="armentiaTest.Banda" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'banda.label', default: 'Banda')}" />
+		<g:set var="puedeCrearIntegrantes" value="${true}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -33,6 +34,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
+					<g:link class="create" controller="integrante" action="create" params="['banda.id': bandaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'integrante.label', default: 'Integrante')])}</g:link>
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>

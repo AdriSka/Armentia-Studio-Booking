@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'armentia.label', default: 'Armentia')}" />
+		<g:set var="puedeCrearSalas" value="${false}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>

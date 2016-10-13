@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Armentia" %>
+<%@ page import="armentiaTest.Armentia" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,11 +24,13 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="nombre" title="${message(code: 'armentia.nombre.label', default: 'Nombre')}" />
+
 						<g:sortableColumn property="direccion" title="${message(code: 'armentia.direccion.label', default: 'Direccion')}" />
 					
 						<g:sortableColumn property="barrioLocalidad" title="${message(code: 'armentia.barrioLocalidad.label', default: 'Barrio Localidad')}" />
 					
-						<th><g:message code="armentia.salas.label" default="Salas" /></th>
+						<th><g:message code="armentia.salasAmount.label" default="Cantidad de Salas" /></th>
 					
 					</tr>
 				</thead>
@@ -36,11 +38,18 @@
 				<g:each in="${armentiaInstanceList}" status="i" var="armentiaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${armentiaInstance.id}">${fieldValue(bean: armentiaInstance, field: "direccion")}</g:link></td>
+						<td><g:link action="show" id="${armentiaInstance.id}">${fieldValue(bean: armentiaInstance, field: "nombre")}</g:link></td>
+					
+						<td>${fieldValue(bean: armentiaInstance, field: "direccion")}</td>
 					
 						<td>${fieldValue(bean: armentiaInstance, field: "barrioLocalidad")}</td>
 					
-						<td>${fieldValue(bean: armentiaInstance, field: "salas")}</td>
+						<g:if test="${armentiaInstance.salas.size()}">
+							<td>${armentiaInstance.salas.size()}</td>
+						</g:if>						
+						<g:else>
+							<td><font size="3" color="red"><i>DEBE AGREGARSE AL MENOS UNA SALA</i></font></td>
+						</g:else>
 					
 					</tr>
 				</g:each>

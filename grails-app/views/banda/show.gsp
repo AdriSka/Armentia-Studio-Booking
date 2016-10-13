@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Banda" %>
+<%@ page import="armentiaTest.Banda" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,24 +32,30 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${bandaInstance?.integrantes}">
-				<li class="fieldcontain">
-					<span id="integrantes-label" class="property-label"><g:message code="banda.integrantes.label" default="Integrantes" /></span>
-					
-						<span class="property-value" aria-labelledby="integrantes-label"><g:link controller="integrante" action="show" id="${bandaInstance?.integrantes?.id}">${bandaInstance?.integrantes?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${bandaInstance?.abono}">
+				
 				<li class="fieldcontain">
 					<span id="abono-label" class="property-label"><g:message code="banda.abono.label" default="Abono" /></span>
-					
-						<span class="property-value" aria-labelledby="abono-label"><g:link controller="abono" action="show" id="${bandaInstance?.abono?.id}">${bandaInstance?.abono?.encodeAsHTML()}</g:link></span>
-					
+					<g:if test="${bandaInstance?.abono}">
+						<span class="property-value" aria-labelledby="abono-label">${bandaInstance?.abono?.alias?.encodeAsHTML()}</span>
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="abono-label"><font size="3" ><i>-Sin abono-</i></font></span>
+					</g:else>
 				</li>
-				</g:if>
-			
+
+
+				<li class="fieldcontain">
+					<span id="integrantes-label" class="property-label"><g:message code="banda.integrantes.label" default="Integrantes" /></span>
+					<g:if test="${bandaInstance?.integrantes}">
+						<g:each in="${bandaInstance.integrantes}" var="i">
+							<span class="property-value" aria-labelledby="integrantes-label"><g:link controller="integrante" action="show" id="${i.id}">${i?.nombre?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="integrantes-label"><font size="3" color="red"><i>Debe agregar al menos un integrante</i></font></span>
+					</g:else>
+				</li>
+
 			</ol>
 			<g:form url="[resource:bandaInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

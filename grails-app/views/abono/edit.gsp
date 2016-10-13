@@ -1,4 +1,4 @@
-<%@ page import="armentiaProject.Abono" %>
+<%@ page import="armentiaTest.Abono" %>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -1,9 +1,10 @@
-<%@ page import="armentiaProject.Armentia" %>
+<%@ page import="armentiaTest.Armentia" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'armentia.label', default: 'Armentia')}" />
+		<g:set var="puedeCrearSalas" value="${true}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -33,6 +34,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
+					<g:link class="create" controller="sala" action="create" params="['armentia.id': armentiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'sala.label', default: 'Sala')])}</g:link>
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>

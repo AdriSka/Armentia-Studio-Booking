@@ -1,5 +1,4 @@
-<%@ page import="armentiaProject.Banda" %>
-
+<%@ page import="armentiaTest.Banda" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'nombre', 'error')} required">
@@ -11,21 +10,39 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'integrantes', 'error')} required">
-	<label for="integrantes">
-		<g:message code="banda.integrantes.label" default="Integrantes" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="integrantes" name="integrantes.id" from="${armentiaProject.Integrante.list()}" optionKey="id" required="" value="${bandaInstance?.integrantes?.id}" class="many-to-one"/>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'abono', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'abono', 'error')} ">
 	<label for="abono">
 		<g:message code="banda.abono.label" default="Abono" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="abono" name="abono.id" from="${armentiaProject.Abono.list()}" optionKey="id" required="" value="${bandaInstance?.abono?.id}" class="many-to-one"/>
+	<g:select id="abono" name="abono.id" from="${armentiaTest.Abono.list()}" optionKey="id" optionValue="alias" value="${bandaInstance?.abono?.id}" class="many-to-one" noSelection="['null': 'Seleccione Abono']"/>
 
 </div>
 
+
+<g:if test="${puedeCrearIntegrantes}" >
+<div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'integrantes', 'error')} ">
+	<label for="integrantes">
+		<g:message code="banda.integrantes.label" default="Integrantes" />
+	</label>
+		
+	<ul class="one-to-many">
+<g:if test="${bandaInstance?.integrantes}" >
+	<g:each in="${bandaInstance?.integrantes?}" var="i">
+	    <li><g:link controller="integrante" action="show" id="${i.id}">${i?.nombre?.encodeAsHTML()}</g:link></li>
+	</g:each>
+</g:if>
+<g:else>
+	<div id="sinIntegrantes">
+		<font size="3" color="red"><i>Debe agregar al menos un integrante</i></font>
+	</div>
+</g:else>
+<%--		<br>--%>
+<%--		<div class="nav">--%>
+<%--			<g:link class="create" controller="integrante" action="create" params="['banda.id': bandaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'integrante.label', default: 'Integrante')])}</g:link>--%>
+<%--		</div>--%>
+	</ul>
+
+</div>
+</g:if>

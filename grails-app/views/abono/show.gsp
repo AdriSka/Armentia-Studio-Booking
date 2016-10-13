@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Abono" %>
+<%@ page import="armentiaTest.Abono" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,6 +28,15 @@
 					<span id="inicioAbono-label" class="property-label"><g:message code="abono.inicioAbono.label" default="Inicio Abono" /></span>
 					
 						<span class="property-value" aria-labelledby="inicioAbono-label"><g:formatDate date="${abonoInstance?.inicioAbono}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${abonoInstance?.alias}">
+				<li class="fieldcontain">
+					<span id="alias-label" class="property-label"><g:message code="abono.alias.label" default="Alias" /></span>
+					
+						<span class="property-value" aria-labelledby="alias-label"><g:fieldValue bean="${abonoInstance}" field="alias"/></span>
 					
 				</li>
 				</g:if>

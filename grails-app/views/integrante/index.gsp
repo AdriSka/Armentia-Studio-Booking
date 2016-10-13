@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaProject.Integrante" %>
+<%@ page import="armentiaTest.Integrante" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+<%--				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--%>
 			</ul>
 		</div>
 		<div id="list-integrante" class="content scaffold-list" role="main">
@@ -24,13 +24,13 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="nombre" title="${message(code: 'integrante.nombre.label', default: 'Nombre')}" />
+						<g:sortableColumn property="banda" title="${message(code: 'integrante.banda.label', default: 'Banda')}" />
 					
-						<g:sortableColumn property="apellido" title="${message(code: 'integrante.apellido.label', default: 'Apellido')}" />
+						<g:sortableColumn property="nombre" title="${message(code: 'integrante.nombreCompleto.label', default: 'Nombre')}" />
 					
-						<g:sortableColumn property="mail" title="${message(code: 'integrante.mail.label', default: 'Mail')}" />
+						<th><g:message code="integrante.mail.label" default="e-Mail" /></th>
 					
-						<g:sortableColumn property="telefono" title="${message(code: 'integrante.telefono.label', default: 'Telefono')}" />
+						<th><g:message code="integrante.telefono.label" default="Teléfono" /></th>
 					
 					</tr>
 				</thead>
@@ -38,13 +38,18 @@
 				<g:each in="${integranteInstanceList}" status="i" var="integranteInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${integranteInstance.id}">${fieldValue(bean: integranteInstance, field: "nombre")}</g:link></td>
+						<td><g:link controller="banda" action="show" id="${integranteInstance.banda.id}">${integranteInstance.banda.nombre}</g:link></td>
 					
-						<td>${fieldValue(bean: integranteInstance, field: "apellido")}</td>
+						<td><g:link action="show" id="${integranteInstance.id}">${integranteInstance?.nombre}</g:link></td>
 					
 						<td>${fieldValue(bean: integranteInstance, field: "mail")}</td>
 					
-						<td>${fieldValue(bean: integranteInstance, field: "telefono")}</td>
+						<g:if test="${integranteInstance.telefono}">
+							<td>${fieldValue(bean: integranteInstance, field: "telefono")}</td>
+						</g:if>						
+						<g:else>
+							<td><font size="3" ><i>-Sin teléfono asignado-</i></font></td>
+						</g:else>
 					
 					</tr>
 				</g:each>
