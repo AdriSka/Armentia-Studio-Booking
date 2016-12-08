@@ -1,4 +1,4 @@
-<%@ page import="armentiaTest.Banda" %>
+<%@ page import="cuandoEnsayo.Banda" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: bandaInstance, field: 'nombre', 'error')} required">
@@ -16,7 +16,7 @@
 		<g:message code="banda.abono.label" default="Abono" />
 		
 	</label>
-	<g:select id="abono" name="abono.id" from="${armentiaTest.Abono.list()}" optionKey="id" optionValue="alias" value="${bandaInstance?.abono?.id}" class="many-to-one" noSelection="['null': 'Seleccione Abono']"/>
+	<g:select id="abono" name="abono.id" from="${cuandoEnsayo.Abono.list()}" optionKey="id" optionValue="alias" value="${bandaInstance?.abono?.id}" class="many-to-one" noSelection="['null': 'Seleccione Abono']"/>
 
 </div>
 

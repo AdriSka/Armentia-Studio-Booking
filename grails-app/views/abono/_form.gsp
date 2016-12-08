@@ -1,4 +1,4 @@
-<%@ page import="armentiaTest.Abono" %>
+<%@ page import="cuandoEnsayo.Abono" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: abonoInstance, field: 'alias', 'error')} required">

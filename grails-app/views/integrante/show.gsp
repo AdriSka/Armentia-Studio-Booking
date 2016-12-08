@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaTest.Integrante" %>
+<%@ page import="cuandoEnsayo.Integrante" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 		<div id="show-integrante" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>${integranteInstance?.nombre}</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -32,14 +32,14 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${integranteInstance?.nombre}">
-				<li class="fieldcontain">
-					<span id="nombre-label" class="property-label"><g:message code="integrante.nombre.label" default="Nombre" /></span>
-					
-						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${integranteInstance}" field="nombre"/></span>
-					
-				</li>
-				</g:if>
+<%--				<g:if test="${integranteInstance?.nombre}">--%>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="nombre-label" class="property-label"><g:message code="integrante.nombre.label" default="Nombre" /></span>--%>
+<%--					--%>
+<%--						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${integranteInstance}" field="nombre"/></span>--%>
+<%--					--%>
+<%--				</li>--%>
+<%--				</g:if>--%>
 			
 				<g:if test="${integranteInstance?.mail}">
 				<li class="fieldcontain">

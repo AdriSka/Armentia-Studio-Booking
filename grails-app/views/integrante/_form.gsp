@@ -1,4 +1,4 @@
-<%@ page import="armentiaTest.Integrante" %>
+<%@ page import="cuandoEnsayo.Integrante" %>
 
 
 
@@ -35,7 +35,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	
-<%--	<g:select id="banda" name="banda.id" from="${armentiaTest.Banda.list()}" optionKey="id" optionValue="nombre" required="" value="${integranteInstance?.banda?.id}" class="many-to-one"/>--%>
+<%--	<g:select id="banda" name="banda.id" from="${cuandoEnsayo.Banda.list()}" optionKey="id" optionValue="nombre" required="" value="${integranteInstance?.banda?.id}" class="many-to-one"/>--%>
 	<g:hiddenField name="banda.id" value="${integranteInstance?.banda?.id}" />
 <%--	<g:field type="text" name="bandaField" disabled value="${integranteInstance?.banda?.nombre}"/>--%>
 	

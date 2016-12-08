@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaTest.Sala" %>
+<%@ page import="cuandoEnsayo.Sala" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-<%--				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--%>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-sala" class="content scaffold-show" role="main">
@@ -22,24 +22,6 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list sala">
-
-				<g:if test="${salaInstance?.armentia}">
-				<li class="fieldcontain">
-					<span id="armentia-label" class="property-label"><g:message code="sala.armentia.label" default="Armentia" /></span>
-					
-						<span class="property-value" aria-labelledby="armentia-label"><g:link controller="armentia" action="show" id="${salaInstance?.armentia?.id}">${salaInstance?.armentia?.nombre?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${salaInstance?.nombreSala}">
-				<li class="fieldcontain">
-					<span id="nombreSala-label" class="property-label"><g:message code="sala.nombreSala.label" default="Nombre de la Sala" /></span>
-					
-						<span class="property-value" aria-labelledby="nombreSala-label"><g:fieldValue bean="${salaInstance}" field="nombreSala"/></span>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${salaInstance?.precioPorHora}">
 				<li class="fieldcontain">
@@ -49,14 +31,39 @@
 					
 				</li>
 				</g:if>
-				
-				<g:if test="${salaInstance?.reservas}">
+			
+				<g:if test="${salaInstance?.nombre}">
 				<li class="fieldcontain">
-					<span id="reservas-label" class="property-label"><g:message code="sala.reservas.label" default="Reservas" /></span>
+					<span id="nombre-label" class="property-label"><g:message code="sala.nombre.label" default="Nombre" /></span>
 					
-						<g:each in="${salaInstance.reservas}" var="r">
-						<span class="property-value" aria-labelledby="reservas-label"><g:link controller="reserva" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${salaInstance}" field="nombre"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${salaInstance?.complejo}">
+				<li class="fieldcontain">
+					<span id="complejo-label" class="property-label"><g:message code="sala.complejo.label" default="Complejo" /></span>
+					
+						<span class="property-value" aria-labelledby="complejo-label"><g:fieldValue bean="${salaInstance}" field="complejo"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${salaInstance?.direccion}">
+				<li class="fieldcontain">
+					<span id="direccion-label" class="property-label"><g:message code="sala.direccion.label" default="Direccion" /></span>
+					
+						<span class="property-value" aria-labelledby="direccion-label"><g:fieldValue bean="${salaInstance}" field="direccion"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${salaInstance?.barrioLocalidad}">
+				<li class="fieldcontain">
+					<span id="barrioLocalidad-label" class="property-label"><g:message code="sala.barrioLocalidad.label" default="Barrio Localidad" /></span>
+					
+						<span class="property-value" aria-labelledby="barrioLocalidad-label"><g:fieldValue bean="${salaInstance}" field="barrioLocalidad"/></span>
 					
 				</li>
 				</g:if>

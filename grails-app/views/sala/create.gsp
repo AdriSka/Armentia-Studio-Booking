@@ -3,7 +3,6 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'sala.label', default: 'Sala')}" />
-		<g:set var="entityArmentiaName" value="${salaInstance?.armentia?.nombre}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -15,7 +14,7 @@
 			</ul>
 		</div>
 		<div id="create-sala" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.sala.label" args="[entityArmentiaName]" /></h1>
+			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

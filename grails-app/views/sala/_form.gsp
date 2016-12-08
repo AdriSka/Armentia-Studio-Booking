@@ -1,14 +1,5 @@
-<%@ page import="armentiaTest.Sala" %>
+<%@ page import="cuandoEnsayo.Sala" %>
 
-
-<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'nombreSala', 'error')} required">
-	<label for="nombreSala">
-		<g:message code="banda.nombreSala.label" default="Nombre de la Sala" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="nombreSala" required="" value="${salaInstance?.nombreSala}"/>
-
-</div>
 
 
 <div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'precioPorHora', 'error')} required">
@@ -16,29 +7,43 @@
 		<g:message code="sala.precioPorHora.label" default="Precio Por Hora" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="precioPorHora" type="number" value="${salaInstance.precioPorHora}" required=""/>
+	<g:field name="precioPorHora" type="number" min="1" value="${salaInstance.precioPorHora}" required=""/>
 
 </div>
 
-
-<%--<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'reservas', 'error')} ">--%>
-<%--	<label for="reservas">--%>
-<%--		<g:message code="sala.reservas.label" default="Reservas" />--%>
-<%--		--%>
-<%--	</label>--%>
-<%--	<g:select name="reservas" from="${armentiaTest.Reserva.list()}" multiple="multiple" optionKey="id" size="5" value="${salaInstance?.reservas*.id}" class="many-to-many"/>--%>
-<%----%>
-<%--</div>--%>
-
-
-<div hidden class="fieldcontain ${hasErrors(bean: salaInstance, field: 'armentia', 'error')} required">
-	<label for="armentia">
-		<g:message code="sala.armentia.label" default="Armentia" />
+<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'nombre', 'error')} required">
+	<label for="nombre">
+		<g:message code="sala.nombre.label" default="Nombre" />
 		<span class="required-indicator">*</span>
 	</label>
+	<g:textField name="nombre" required="" value="${salaInstance?.nombre}"/>
 
-<%--	<g:select id="armentia" name="armentia.id" from="${armentiaTest.Armentia.list()}" optionKey="id" required="" value="${salaInstance?.armentia?.id}" class="many-to-one"/>	--%>
-<%--		<g:field type="text" name="armentia.id" value="${salaInstance?.armentia?.id}"/>--%>
-	<g:hiddenField name="armentia.id" value="${salaInstance?.armentia?.id}" />
-	
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'complejo', 'error')} required">
+	<label for="complejo">
+		<g:message code="sala.complejo.label" default="Complejo" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="complejo" required="" value="${salaInstance?.complejo}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'direccion', 'error')} required">
+	<label for="direccion">
+		<g:message code="sala.direccion.label" default="Direccion" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="direccion" required="" value="${salaInstance?.direccion}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: salaInstance, field: 'barrioLocalidad', 'error')} required">
+	<label for="barrioLocalidad">
+		<g:message code="sala.barrioLocalidad.label" default="Barrio Localidad" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="barrioLocalidad" required="" value="${salaInstance?.barrioLocalidad}"/>
+
+</div>
+

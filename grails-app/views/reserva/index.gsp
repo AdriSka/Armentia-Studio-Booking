@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaTest.Reserva" %>
+<%@ page import="cuandoEnsayo.Reserva" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,11 +26,13 @@
 					
 						<g:sortableColumn property="horaInicio" title="${message(code: 'reserva.horaInicio.label', default: 'Hora Inicio')}" />
 					
-						<g:sortableColumn property="horaFin" title="${message(code: 'reserva.horaFin.label', default: 'Hora Fin')}" />
+						<g:sortableColumn property="duracion" title="${message(code: 'reserva.duracion.label', default: 'Duracion')}" />
 					
 						<g:sortableColumn property="nombreBanda" title="${message(code: 'reserva.nombreBanda.label', default: 'Nombre Banda')}" />
 					
 						<g:sortableColumn property="integranteQueReservo" title="${message(code: 'reserva.integranteQueReservo.label', default: 'Integrante Que Reservo')}" />
+					
+						<th><g:message code="reserva.sala.label" default="Sala" /></th>
 					
 					</tr>
 				</thead>
@@ -40,11 +42,13 @@
 					
 						<td><g:link action="show" id="${reservaInstance.id}">${fieldValue(bean: reservaInstance, field: "horaInicio")}</g:link></td>
 					
-						<td><g:formatDate date="${reservaInstance.horaFin}" /></td>
+						<td>${fieldValue(bean: reservaInstance, field: "duracion")}</td>
 					
 						<td>${fieldValue(bean: reservaInstance, field: "nombreBanda")}</td>
 					
 						<td>${fieldValue(bean: reservaInstance, field: "integranteQueReservo")}</td>
+					
+						<td>${fieldValue(bean: reservaInstance, field: "sala")}</td>
 					
 					</tr>
 				</g:each>

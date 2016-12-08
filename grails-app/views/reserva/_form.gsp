@@ -1,4 +1,4 @@
-<%@ page import="armentiaTest.Reserva" %>
+<%@ page import="cuandoEnsayo.Reserva" %>
 
 
 
@@ -11,21 +11,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: reservaInstance, field: 'horaFin', 'error')} required">
-	<label for="horaFin">
-		<g:message code="reserva.horaFin.label" default="Hora Fin" />
+<div class="fieldcontain ${hasErrors(bean: reservaInstance, field: 'duracion', 'error')} required">
+	<label for="duracion">
+		<g:message code="reserva.duracion.label" default="Duracion" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="horaFin" precision="day"  value="${reservaInstance?.horaFin}"  />
+	<g:field name="duracion" type="number" min="1" value="${reservaInstance.duracion}" required=""/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: reservaInstance, field: 'nombreBanda', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: reservaInstance, field: 'nombreBanda', 'error')} required">
 	<label for="nombreBanda">
 		<g:message code="reserva.nombreBanda.label" default="Nombre Banda" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nombreBanda" value="${reservaInstance?.nombreBanda}"/>
+	<g:textField name="nombreBanda" required="" value="${reservaInstance?.nombreBanda}"/>
 
 </div>
 
@@ -35,6 +35,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="integranteQueReservo" required="" value="${reservaInstance?.integranteQueReservo}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reservaInstance, field: 'sala', 'error')} required">
+	<label for="sala">
+		<g:message code="reserva.sala.label" default="Sala" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="sala" name="sala.id" from="${cuandoEnsayo.Sala.list()}" optionKey="id" required="" value="${reservaInstance?.sala?.id}" class="many-to-one"/>
 
 </div>
 

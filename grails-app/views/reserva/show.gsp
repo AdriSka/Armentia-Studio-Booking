@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaTest.Reserva" %>
+<%@ page import="cuandoEnsayo.Reserva" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${reservaInstance?.horaFin}">
+				<g:if test="${reservaInstance?.duracion}">
 				<li class="fieldcontain">
-					<span id="horaFin-label" class="property-label"><g:message code="reserva.horaFin.label" default="Hora Fin" /></span>
+					<span id="duracion-label" class="property-label"><g:message code="reserva.duracion.label" default="Duracion" /></span>
 					
-						<span class="property-value" aria-labelledby="horaFin-label"><g:formatDate date="${reservaInstance?.horaFin}" /></span>
+						<span class="property-value" aria-labelledby="duracion-label"><g:fieldValue bean="${reservaInstance}" field="duracion"/></span>
 					
 				</li>
 				</g:if>
@@ -55,6 +55,15 @@
 					<span id="integranteQueReservo-label" class="property-label"><g:message code="reserva.integranteQueReservo.label" default="Integrante Que Reservo" /></span>
 					
 						<span class="property-value" aria-labelledby="integranteQueReservo-label"><g:fieldValue bean="${reservaInstance}" field="integranteQueReservo"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${reservaInstance?.sala}">
+				<li class="fieldcontain">
+					<span id="sala-label" class="property-label"><g:message code="reserva.sala.label" default="Sala" /></span>
+					
+						<span class="property-value" aria-labelledby="sala-label"><g:link controller="sala" action="show" id="${reservaInstance?.sala?.id}">${reservaInstance?.sala?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

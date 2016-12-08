@@ -1,5 +1,5 @@
 
-<%@ page import="armentiaTest.Integrante" %>
+<%@ page import="cuandoEnsayo.Integrante" %>
 <!DOCTYPE html>
 <html>
 	<head>

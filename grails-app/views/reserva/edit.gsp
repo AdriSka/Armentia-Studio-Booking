@@ -1,4 +1,4 @@
-<%@ page import="armentiaTest.Reserva" %>
+<%@ page import="cuandoEnsayo.Reserva" %>
 <!DOCTYPE html>
 <html>
 	<head>
