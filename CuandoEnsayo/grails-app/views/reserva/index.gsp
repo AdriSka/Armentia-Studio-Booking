@@ -6,6 +6,24 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'reserva.label', default: 'Reserva')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		
+		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+
+		<g:javascript src="fullcalendar.js" />
+		<g:javascript src="fullcalendar.min.js" />
+		<g:javascript src="gcal.js" />
+<%--		<g:javascript src="jquery-1.11.1.min.js" />--%>
+				<g:javascript>
+		$(document).ready(function() {
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
+});
+		</g:javascript>
+		
 	</head>
 	<body>
 		<a href="#list-reserva" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -58,5 +76,14 @@
 				<g:paginate total="${reservaInstanceCount ?: 0}" />
 			</div>
 		</div>
-	</body>
+		
+
+<%--<div id='calendar'></div>--%>
+<fullcal:calendar id="calendar">
+    header: { left: "", center: "", right: "prev, today, next" },
+    columnFormat: { week: 'ddd d/M' },
+    timeFormat: 'HH:mm{ - HH:mm}'
+</fullcal:calendar>
+		
+		</body>
 </html>

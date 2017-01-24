@@ -17,4 +17,26 @@ class Reserva {
 		sala nullable: false
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 
+	 * @param otraReserva
+	 * @return 0 si se solapean
+	 * 
+	 * in = isSolapetedWith
+	 * 
+	 * comparetor en estado alpha
+	 * 
+	 */
+	def comparetor(Reserva otraReserva) 
+	{
+		if ([otraReserva.horaInicio .. (otraReserva.horaInicio + duracion.inHours)] in
+			 [this.horaInicio .. (this.horaInicio + duracion.inHours)])
+			return 0
+		else	 
+			return this.horaInicio - otraReserva.horaInicio
+		
+	}
+	
 }
