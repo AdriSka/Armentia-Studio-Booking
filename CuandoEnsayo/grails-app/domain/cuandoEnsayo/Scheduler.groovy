@@ -4,19 +4,47 @@ import java.util.Date;
 
 class Scheduler {
 	
-	//static List  <Reserva> reservasDia
-	static hasMany = [reservas: Reserva]
-
-	def obtainDia (Reserva unaReservaNueva)
+//	static List  <Reserva> reservasDia
+//	static hasMany = [reservas: Reserva]
+	LinkedList<DiaDeCalendario> matrix
+	
+	def actualizarCalendario(Date diaInicio)
+	{
+		if ( matrix.isEmpty() || matrix.get(0).dia != diaInicio )
+		{
+			for (int i=0; i<7; i++)
+			{
+				def diaDeCalendario = new DiaDeCalendario()
+				diaDeCalendario.dia = diaInicio+i
+				diaDeCalendario.reservas.add(Reservas.findAllByDia(diaInicio+i))			
+				matrix.add(diaDeCalendario)
+			}
+		}
+	}
+	
+	
+	
+	
+	def obtenerDia (Reserva unaReservaNueva)
 	{
 		List<Reserva> reservasDia
-		reservasDia.add(reservas.findAll ( it = unaReservaNueva.horaInicio.day))
+		for (int i=0; i<matrix.size(); i++)
+		{
+			if (matrix.get(i).dia == unaReservaNueva.dia)
+			{
+				reservasDia.add(matrix.get(i).reservas)
+				break
+			}
+		}
 		return reservasDia
 	}
 	
 	/*true si no se solapa la reserva con una ya existente*/
-	def isAvaliable (List<Reserva> reservasDia)
+	def estaDisponible (Reserva unaReservaNueva)
 	{
+		def reservasDia = obtenerDia(unaReservaNueva)
+		if(reservasDia.isEmpty())
+			return true		
 		reservasDia.each{
 			if(it.comparetor(unaReservaNueva.horaInicio) == 0)
 				return false
@@ -26,9 +54,15 @@ class Scheduler {
 		return true
 	}
 	
+	
+	def saveReserva(List<Reserva> reservas){
+		
+	}
+	
 	def saveReserva(Reserva unaReservaNueva)
 	{
-		if (isAvaliable(obtainDia(unaReservaNueva)))
+		
+		if (estaDisponible(unaReservaNueva))
 		{
 			unaReservaNueva.save flush:true
 			reservas.add(unaReservaNueva)
@@ -48,7 +82,7 @@ class Scheduler {
 	//CHECK - estoy muy esceptico de este metodo by POLA
 	def updateReserva(Reserva unaReservaExistente, Reserva unaReservaNueva){
 		
-		if ((unaReservaExistente.comparetor(unaReservaNueva == 0)) && (isAvaliable(obtainDia(unaReservaNueva).remove(unaReservaExistente))))
+		if ((unaReservaExistente.comparetor(unaReservaNueva) == 0) && (estaDisponible(unaReservaNueva).remove(unaReservaExistente)))
 		{
 			deleteReserva(unaReservaExistente)
 			unaReservaNueva.save flush:true

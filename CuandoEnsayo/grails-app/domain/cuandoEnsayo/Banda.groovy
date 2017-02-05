@@ -1,14 +1,12 @@
 package cuandoEnsayo
 
-class Banda {
+class Banda extends User{
 
-	String nombre
 	Abono abono
 	
 	static hasMany = [integrantes: Integrante]
 	
 	static constraints = {
-		nombre nullable:false, blank:false, unique: true
 		integrantes nullable:true
 		abono nullable:true
 	}
